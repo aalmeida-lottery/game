@@ -1,4 +1,3 @@
-
 let questions = [];
 
 const questionContainer = document.getElementById('question-container');
@@ -122,22 +121,22 @@ function showResult() {
     }
 }
 
-restartButton.addEventListener('click', () => {
-    fetch('/questions')
+function fetchQuestions() {
+    fetch('questions.json')
         .then(response => response.json())
         .then(data => {
-            questions = data;
+            questions = selectRandomQuestions(data, 12);
             startGame();
         })
         .catch(error => console.error('Error fetching questions:', error));
-});
+}
 
-fetch('/questions')
-    .then(response => response.json())
-    .then(data => {
-        questions = data;
-        startGame();
-    })
-    .catch(error => console.error('Error fetching questions:', error));
+function selectRandomQuestions(questionsArray, numQuestions) {
+    const shuffled = questionsArray.sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, numQuestions);
+}
 
+restartButton.addEventListener('click', fetchQuestions);
 nextButton.addEventListener('click', handleNextQuestion);
+
+document.addEventListener('DOMContentLoaded', fetchQuestions);
