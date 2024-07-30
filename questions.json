@@ -643,7 +643,7 @@
         "answer": "True"
     },
     {
-        "question": "Approximately 61.79% of the amount wagered on each drawing goes into the prize pool.",
+        "question": "In Megabucks, approximately 61.79% of the amount wagered on each drawing goes into the prize pool.",
         "type": "true-false",
         "options": ["True", "False"],
         "answer": "False",
