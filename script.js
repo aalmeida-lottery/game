@@ -1,3 +1,13 @@
+/*
+script.js
+
+This file contains the JavaScript logic for the Lottery Quiz Game. 
+It includes functions to fetch and display questions, handle user interactions, calculate scores, 
+and manage the game flow.
+*/
+
+
+// global variables and DOM elements references
 let questions = [];
 const questionContainer = document.getElementById('question-container');
 const questionElement = document.getElementById('question');
@@ -14,29 +24,43 @@ let score = 0;
 let selectedAnswer = null;
 let hasAnswered = false;
 
+// function to shuffle an array in random order
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+// function to select a specific number of random questions from the pool 
+function selectRandomQuestions(allQuestions, numQuestions) {
+    const shuffled = shuffleArray([...allQuestions]);
+    return shuffled.slice(0, numQuestions);
+}
+
+// initialize and start the game
 function startGame() {
-    fetch('./questions.json')
+    fetch('./questions.json') // fetch questions from the json file
     .then(response => response.json())
     .then(data => {
-        // console.log(data);
-        // console.log(data[0]);
-        questions = data;
-        // console.log(questions.length);
+        questions = selectRandomQuestions(data, 12); // select 12 random questions
         currentQuestionIndex = 0;
         score = 0;
         selectedAnswer = null;
         hasAnswered = false;
-        nextButton.classList.add('hide');
-        nextButton.style.display = ''; // Ensure the Next button is reset to its default display property
+        nextButton.classList.add('hide'); // hide the next button initially
+        nextButton.style.display = ''; // reset the next button display properly
         feedbackElement.classList.add('hide');
         feedbackElement.innerText = '';
         resultContainer.style.display = 'none';
         questionContainer.style.display = 'block';
-        showQuestion(questions[currentQuestionIndex]);
+        showQuestion(questions[currentQuestionIndex]); // display the question
     })
     .catch(error => console.error('Error fetching questions:', error));
 }
 
+// display a question and the options to asnwer it
 function showQuestion(question) {
     questionElement.innerText = question.question;
     answerButtonsElement.innerHTML = '';
@@ -53,19 +77,21 @@ function showQuestion(question) {
     hasAnswered = false;
 }
 
+// handle the answer selected
 function selectAnswer(button, selectedOption, correctAnswer) {
     if (hasAnswered) return;
 
-    // Remove underline from previously selected answer
+    // remove underline from previously selected answer
     Array.from(answerButtonsElement.children).forEach(btn => {
         btn.classList.remove('selected');
     });
 
     selectedAnswer = { button, selectedOption, correctAnswer };
-    button.classList.add('selected'); // Underline the selected answer
+    button.classList.add('selected'); // underline the selected answer
     nextButton.classList.remove('hide');
 }
 
+// show feedback for the answer selected
 function showAnswerFeedback() {
     const { button, selectedOption, correctAnswer } = selectedAnswer;
     const currentQuestion = questions[currentQuestionIndex];  
@@ -89,9 +115,10 @@ function showAnswerFeedback() {
     feedbackElement.classList.remove('hide');
     nextButton.innerText = 'Next';
     nextButton.classList.remove('hide');
-    hasAnswered = true; // Mark the question as answered after showing feedback
+    hasAnswered = true; // mark the question as answered after showing feedback
 }
 
+// handle the "Next" button click
 function handleNextQuestion() {
     if (!hasAnswered) {
         showAnswerFeedback();
@@ -100,6 +127,7 @@ function handleNextQuestion() {
     }
 }
 
+// move to the next question or show the result if it was the last question
 function proceedToNextQuestion() {
     if (currentQuestionIndex < questions.length - 1) {
         currentQuestionIndex++;
@@ -111,40 +139,40 @@ function proceedToNextQuestion() {
         feedbackElement.innerText = '';
         nextButton.innerText = 'Submit';
     } else {
-        showResult();
+        showResult(); // show final result if all answers have been answered
     }
 }
 
+// show final result and handle the pass/fail
 function showResult() {
     questionContainer.style.display = 'none';
-    nextButton.classList.add('hide'); // Ensure the Next button is hidden
-    nextButton.style.display = 'none'; // Ensure the Next button is hidden
+    nextButton.classList.add('hide'); // ensure the Next button is hidden
+    nextButton.style.display = 'none'; // ensure the Next button is hidden
     resultContainer.style.display = 'block';
     const percentage = (score / questions.length) * 100;
     scoreElement.innerText = `Your score: ${score}/${questions.length} (${percentage.toFixed(2)}%)`;
     if (percentage >= 80) {
         resultMessage.innerText = 'Congratulations, you passed!';
+        // trigger confetti if player wins
+        confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 }
+        });
     } else {
-        resultMessage.innerText = 'Sorry, you did not pass. Better luck next time! You need a score of 80% or higher to pass.';
+        resultMessage.innerText = 'Sorry, you did not pass. \nYou need a score of 80% or higher to pass. \nBetter luck next time!';
     }
 }
 
-// restartButton.addEventListener('click', () => {
-//     fetch('/questions')
-//         .then(response => response.json())
-//         .then(data => {
-//             questions = data;
-//             startGame();
-//         })
-//         .catch(error => console.error('Error fetching questions:', error));
-// });
+// event listener for the restart button to start the game again
+restartButton.addEventListener('click', () => {
+    startGame();
+});
 
-fetch('/questions.json')
-    .then(response => response.json())
-    .then(data => {
-        questions = data;
-        // startGame();
-    })
-    .catch(error => console.error('Error fetching questions:', error));
+// initialize game on load
+document.addEventListener('DOMContentLoaded', () => {
+    startGame();
+});
 
+// event listener for the next button to handle the next question logic
 nextButton.addEventListener('click', handleNextQuestion);

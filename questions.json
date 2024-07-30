@@ -398,12 +398,6 @@
         "answer": "50%"
     },
     {
-        "question": "How long do jackpot winners have to select a payment option?",
-        "type": "multiple-choice",
-        "options": ["30 days", "45 days", "60 days", "90 days"],
-        "answer": "60 days"
-    },    
-    {
         "question": "In Powerball, if a winner fails to claim the jackpot and select a payment option within 60 days, how will the prize be paid?",
         "type": "multiple-choice",
         "options": ["As a cash lump sum", "As a charity donation", "As an annuity", "It will be voided"],
@@ -442,20 +436,6 @@
         "type": "true-false",
         "options": ["True", "False"],
         "answer": "True"
-    },
-    {
-        "question": "If the total prizes won for any drawing exceed the net sales for that drawing, the prizes may be paid on a pari-mutuel basis and will be lower than published prize levels.",
-        "type": "true-false",
-        "options": ["True", "False"],
-        "answer": "True"
-    },
-    {
-        "question": "If a winner does not claim the jackpot within 60 days, the prize will be paid as a charity donation.",
-        "type": "true-false",
-        "options": ["True", "False"],
-        "answer": "False",
-        "incorrect_explanation": "The answer is False: It will be paid as an annuity",
-        "correct_explanation": "Correct! It will be paid as an annuity"
     },
     {
         "question": "How many numbers do you select in Mega Millions (excluding the Mega Ball number)?",
@@ -527,14 +507,6 @@
         "incorrect_explanation": "The answer is False: It costs $1",
         "correct_explanation": "Correct! It costs $1"
         
-    },
-    {
-        "question": "Jackpot winners have 90 days to select a payment option.",
-        "type": "true-false",
-        "options": ["True", "False"],
-        "answer": "False",
-        "incorrect_explanation": "The answer is False: They have 60 days",
-        "correct_explanation": "Correct! They have 60 days"
     },
     {
         "question": "How many numbers do you select in Megabucks?",

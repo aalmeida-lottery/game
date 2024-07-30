@@ -1,4 +1,9 @@
- 
+ /*
+style.css
+
+This file contains the CSS styles for the Lottery Quiz Game. It ensures the game elements are 
+styled properly for a good user experience.
+*/
  body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
