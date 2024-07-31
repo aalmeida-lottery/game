@@ -398,12 +398,6 @@
         "answer": "50%"
     },
     {
-        "question": "In Powerball, if a winner fails to claim the jackpot and select a payment option within 60 days, how will the prize be paid?",
-        "type": "multiple-choice",
-        "options": ["As a cash lump sum", "As a charity donation", "As an annuity", "It will be voided"],
-        "answer": "As an annuity"
-    },
-    {
         "question": "You select five numbers between 1-69 and one Powerball number between 1-26 in Powerball.",
         "type": "true-false",
         "options": ["True", "False"],
