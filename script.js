@@ -18,6 +18,7 @@ const scoreElement = document.getElementById('score');
 const resultMessage = document.getElementById('result-message');
 const restartButton = document.getElementById('restart-btn');
 const feedbackElement = document.getElementById('feedback');
+const questionCounter = document.getElementById('question-counter');
 
 let currentQuestionIndex = 0;
 let score = 0;
@@ -56,9 +57,16 @@ function startGame() {
         resultContainer.style.display = 'none';
         questionContainer.style.display = 'block';
         showQuestion(questions[currentQuestionIndex]); // display the question
+        updateQuestionCounter(); // update the question counter
     })
     .catch(error => console.error('Error fetching questions:', error));
 }
+
+// update the question counter
+function updateQuestionCounter() {
+    questionCounter.innerText = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
+}
+
 
 // display a question and the options to asnwer it
 function showQuestion(question) {
@@ -138,6 +146,7 @@ function proceedToNextQuestion() {
         feedbackElement.classList.add('hide');
         feedbackElement.innerText = '';
         nextButton.innerText = 'Submit';
+        updateQuestionCounter();
     } else {
         showResult(); // show final result if all answers have been answered
     }
@@ -149,6 +158,7 @@ function showResult() {
     nextButton.classList.add('hide'); // ensure the Next button is hidden
     nextButton.style.display = 'none'; // ensure the Next button is hidden
     resultContainer.style.display = 'block';
+    questionCounter.classList.add('hide-counter'); // hide question counter
     const percentage = (score / questions.length) * 100;
     scoreElement.innerText = `Your score: ${score}/${questions.length} (${percentage.toFixed(2)}%)`;
     if (percentage >= 80) {
