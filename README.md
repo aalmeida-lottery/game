@@ -1,11 +1,11 @@
 # Lottery Quiz Game
 
-A fun and educational quiz game that tests users' knowledge of the different lottery games. The game is designed with multiple-choice, true/false, offers instant feedack,and provides the final result along with a pass/fail statement. To win the game the user needs a score of 80% or higher!
+A fun and educational quiz game that tests users' knowledge of the different lottery games. The game is designed with multiple-choice, true/false, offers instant feedback, and provides the final result along with a pass/fail statement. To win the game, the user needs a score of 80% or higher!
 
 ## Features
 
 - Random selection of questions from a pool of questions
-- Interactive multiple-choice, true-false questions
+- Interactive multiple-choice, true/false questions
 - Instant feedback on your answers
 - Score calculation and pass/fail result
 - Confetti animation for passing the quiz
@@ -15,16 +15,16 @@ A fun and educational quiz game that tests users' knowledge of the different lot
 - **index.html**: This file contains the HTML structure of the quiz game. It includes the main game container, question container, buttons, and result display elements.
 - **style.css**: This file defines the visual appearance of the game, ensuring it looks appealing and is user-friendly.
 - **script.js**: This file contains all the JavaScript code for the game logic, including functions for handling questions, displaying feedback, calculating scores, and restarting the game.
-- **questions.json**: this file contains an array of quiz questions in JSON format. Each question includes the question text, options, the correct answer, and optional explanations
+- **questions.json**: This file contains an array of quiz questions in JSON format. Each question includes the question text, options, the correct answer, and optional explanations.
 
-## Customazation
+## Customization
 
 ### Changing the number of questions
 
-To Change the number of questions presented in the quiz, you need to modify the JavaScript code in `script.js`.
+To change the number of questions presented in the quiz, you need to modify the JavaScript code in `script.js`.
 
 1. Open the repository on GitHub and navigate to the `script.js` file.
-2. Click in the pencil icon (edit button) to edit the file.
+2. Click the pencil icon (edit button) to edit the file.
 3. Locate the `startGame` function. You will find a line that selects the number of questions:
    ```javascript
    questions = selectRandomQuestions(date, 12); //select 12 random questions
@@ -93,7 +93,7 @@ To Change the number of questions presented in the quiz, you need to modify the 
         }
     }
     ```
-4. Modify the feedback messages as needed. For example to change the correct feedback message to "Well done!":
+4. Modify the feedback messages as needed. For example, to change the correct feedback message to "Well done!":
    ```javascript
    if (selectedOption === correctAnswer) {
         button.classList.add('correct');
@@ -107,7 +107,7 @@ To Change the number of questions presented in the quiz, you need to modify the 
     ```
 5. Click the "Commit changes" button to save your changes.
 
-#### Adding questions to the JSON file
+#### Adding Questions to the JSON File
 
 To add new questions to the quiz, follow these steps:
 
@@ -139,7 +139,7 @@ To add new questions to the quiz, follow these steps:
     }
    ]
    ```
-4. Ensure that each questions includes the following keys:
+4. Ensure that each question includes the following keys:
    - `question`: the question text.
    - `type`: if it's true or false, write "true-false", if it's not then write "multiple-choice".
    - `options`: an array of the options.
@@ -157,7 +157,7 @@ To add new questions to the quiz, follow these steps:
    }
    ```
 
-6. For True/False:
+6. For true/false:
    ```json
    {
       "question": "Your question text here?",
