@@ -158,7 +158,7 @@ function showResult() {
     nextButton.classList.add('hide'); // ensure the Next button is hidden
     nextButton.style.display = 'none'; // ensure the Next button is hidden
     resultContainer.style.display = 'block';
-    questionCounter.classList.add('hide-counter'); // hide question counter
+   // questionCounter.classList.add('hide-counter'); // hide question counter
     const percentage = (score / questions.length) * 100;
     scoreElement.innerText = `Your score: ${score}/${questions.length} (${percentage.toFixed(2)}%)`;
     if (percentage >= 80) {
