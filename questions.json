@@ -643,12 +643,6 @@
         "answer": "False",
         "incorrect_explanation": "The answer is False: 60%",
         "correct_explanation": "Correct! It's 60%"
-    },
-    {
-        "question": "You can select the same numbers for multiple drawings in Lucky for Life.",
-        "type": "true-false",
-        "options": ["True", "False"],
-        "answer": "True"
     }
     
 ]
