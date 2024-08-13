@@ -178,7 +178,7 @@
         "type": "true-false",
         "options": ["True", "False"],
         "answer": "False",
-        "incorrect_explanation": "The answer is False: Minumum wager is $2",
+        "incorrect_explanation": "The answer is False: Minimum wager is $2",
         "correct_explanation": "Correct! The minimum wager is $2"
     },
     {
@@ -202,8 +202,8 @@
     {
         "question": "At what time does the midday drawing for The Numbers Game close?",
         "type": "multiple-choice",
-        "options": ["1:00 pm", "1:30 pm", "2:00 pm", "2:30 pm"],
-        "answer": "2:00 pm"
+        "options": ["1:00 p.m.", "1:30 p.m.", "2:00 p.m.", "2:30 p.m."],
+        "answer": "2:00 p.m."
     },
     {
         "question": "What percentage of the total amount bet is the prize pool for The Numbers Game?",
@@ -290,8 +290,8 @@
     {
         "question": "At what time does the Mass Cash drawing occur daily?",
         "type": "multiple-choice",
-        "options": ["8:00 pm", "8:30 pm", "9:00 pm", "9:30 pm"],
-        "answer": "9:00 pm"
+        "options": ["8:00 p.m.", "8:30 p.m.", "9:00 p.m.", "9:30 p.m."],
+        "answer": "9:00 p.m."
     },
     {
         "question": "What is the top prize for Mass Cash?",
